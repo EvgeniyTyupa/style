@@ -1,0 +1,54 @@
+.main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.main button{
+    width: 324px;
+    height: 102px;
+    border-radius: 0;
+    transition-duration: .5s;
+}
+.main button a{
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    text-decoration: none;
+    transition-duration: .3s;
+}
+.signup{
+    border: 2px solid #000000 !important;
+    margin-right: 50px !important;
+}
+.signup a{
+    color: black;
+}
+.signup:hover a{
+    transform: scale(1.03);
+    
+    color: white;
+}
+.signup:hover{
+    background-color: black !important;
+}
+
+
+.payment{
+    background: #7C0061 !important;
+    margin-left: 50px !important;
+    border: 2px solid transparent !important;
+}
+.payment a{
+    color: white;
+}
+.payment:hover{
+    background: rgb(255, 255, 255) !important;
+    border: 2px solid #7C0061 !important;
+}
+.payment:hover a{
+    color: #7C0061;
+    transform: scale(1.03);
+}
+

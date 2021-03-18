@@ -1,0 +1,30 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0;
+  font-family: 'Roboto';
+}
+::-webkit-scrollbar {
+  width: 10px;
+  opacity: 0;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+  opacity: 0;
+}
+ 
+.active{
+  font-weight: bold;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7C0061;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0;
+}
