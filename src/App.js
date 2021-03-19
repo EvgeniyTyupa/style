@@ -9,6 +9,7 @@ const App = (props) => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={()=><Main/>}/>
+          <Route path="/signup" render={()=><Main/>}/>
         </Switch>
       </BrowserRouter>
     </div>

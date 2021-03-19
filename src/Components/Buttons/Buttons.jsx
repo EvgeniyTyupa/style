@@ -13,7 +13,7 @@ const Buttons = (props) => {
 
     return(
        <div className={classes.main}> 
-           <Button className={classes.signup}>
+           <Button className={classes.signup} onClick={()=>{props.setIsOpenRegister(true)}}>
                <NavLink to="/signup">РЕГИСТРАЦИЯ</NavLink>
            </Button>
            <Button className={classes.payment}>

@@ -20,6 +20,7 @@ import trener1_1 from '../../Assets/trener1_1.jpg';
 import trener2_2 from '../../Assets/trener2_2.jpg';
 import fb from '../../Assets/fb.svg';
 import insta from '../../Assets/insta.svg';
+import RegisterModal from '../../Components/Register/RegisterModal';
 
 const Main = (props) => {
     const [scrolledNav, setScrolledNav] = useState(false);
@@ -40,7 +41,7 @@ const Main = (props) => {
     const [trainersY, setTrainersY] = useState(null);
     const [signupY, setSignupY] = useState(null);
 
-
+    const [isIsOpenRegister, setIsOpenRegister] = useState(false);
 
     const handleScroll = () => {
         if(window.scrollY >= aboutY && window.scrollY <= sheduleY){
@@ -55,20 +56,20 @@ const Main = (props) => {
             setActive3(false);
             setActive4(false);
         }
-        if(window.scrollY >= trainersY && window.scrollY <= signupY + 60){
+        if(window.scrollY + 1 >= trainersY && window.scrollY <= signupY + 60){
             setActive1(false);
             setActive2(false);
             setActive3(true);
             setActive4(false);
         }
-        if(window.scrollY >= signupY - 30){
+        if(window.scrollY + 1 >= signupY - 30){
             setActive1(false);
             setActive2(false);
             setActive3(false);
             setActive4(true);
         }
 
-        if(window.scrollY > 200){
+        if(window.scrollY > 150){
             setScrolledNav(true);
         }else{
             setScrolledNav(false);
@@ -104,6 +105,7 @@ const Main = (props) => {
 
     return(
         <div className={classes.main} id="about" ref={aboutRef}>
+            {isIsOpenRegister && <RegisterModal setIsOpenRegister={setIsOpenRegister}/>}
             {/* NAV */}
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
@@ -130,7 +132,7 @@ const Main = (props) => {
                 <div className={classes.date}>
                     <p>2 апреля - 12 апреля</p>
                 </div>
-                <Buttons/>
+                <Buttons setIsOpenRegister={setIsOpenRegister}/>
                 <p className={classes.garderobText}>Мы знаем, как сделать лучше твой гардероб!</p>
             </div>
             {/* ABOUT */}
@@ -283,7 +285,7 @@ const Main = (props) => {
                 </p>
             </div>
             <span id="trainers" ref={trainersRef}></span>
-            <Buttons/>
+            <Buttons setIsOpenRegister={setIsOpenRegister}/>
             {/* TRAINERS */}
             <div className={classes.trainers}>
                 <h2>ТРЕНЕРЫ КУРСА:</h2>
@@ -377,7 +379,7 @@ const Main = (props) => {
                 </div>
                 
             </div>
-            <Buttons />
+            <Buttons setIsOpenRegister={setIsOpenRegister}/>
             {/* PAYMENT */}
             <div className={classes.payment}>
                 <span>Стоимость курса</span>
