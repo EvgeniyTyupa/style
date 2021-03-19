@@ -3,6 +3,9 @@ import { HashLink as Link } from 'react-router-hash-link';
 import classes from './Main.module.css';
 import Buttons from '../../Components/Buttons/Buttons';
 import Scrollspy from 'react-scrollspy'
+import RegisterModal from '../../Components/Register/RegisterModal';
+import { connect } from 'react-redux';
+import Preloader from '../../Components/Preloader/Preloader';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -20,7 +23,8 @@ import trener1_1 from '../../Assets/trener1_1.jpg';
 import trener2_2 from '../../Assets/trener2_2.jpg';
 import fb from '../../Assets/fb.svg';
 import insta from '../../Assets/insta.svg';
-import RegisterModal from '../../Components/Register/RegisterModal';
+import arrows from '../../Assets/arrows.svg';
+import Burger from '../../Components/Burger/Burger';
 
 const Main = (props) => {
     const [scrolledNav, setScrolledNav] = useState(false);
@@ -42,6 +46,8 @@ const Main = (props) => {
     const [signupY, setSignupY] = useState(null);
 
     const [isIsOpenRegister, setIsOpenRegister] = useState(false);
+
+    const [url, setUrl] = useState("");
 
     const handleScroll = () => {
         if(window.scrollY >= aboutY && window.scrollY <= sheduleY){
@@ -74,16 +80,17 @@ const Main = (props) => {
         }else{
             setScrolledNav(false);
         }
-        console.log("offset: " + window.scrollY)
-        console.log("about: " + aboutY)
-        console.log("shedule: " + sheduleY)
-        console.log("trainers: " + trainersY)
-        console.log("signup: " + signupY)
+        // console.log("offset: " + window.scrollY)
+        // console.log("about: " + aboutY)
+        // console.log("shedule: " + sheduleY)
+        // console.log("trainers: " + trainersY)
+        // console.log("signup: " + signupY)
 
-        console.log("---------------------------------")
+        // console.log("---------------------------------")
     }
     
     useEffect(() => {
+        setUrl(window.location.href);
         const timer = setTimeout(() => {
             setAboutY(aboutRef.current.getBoundingClientRect().top);
             setSheduleY(sheduleRef.current.getBoundingClientRect().top);
@@ -105,7 +112,8 @@ const Main = (props) => {
 
     return(
         <div className={classes.main} id="about" ref={aboutRef}>
-            {isIsOpenRegister && <RegisterModal setIsOpenRegister={setIsOpenRegister}/>}
+            {props.isFetching && <Preloader/>}
+            {isIsOpenRegister && <RegisterModal url={url} setIsOpenRegister={setIsOpenRegister}/>}
             {/* NAV */}
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
@@ -132,24 +140,26 @@ const Main = (props) => {
                 <div className={classes.date}>
                     <p>2 апреля - 12 апреля</p>
                 </div>
-                <Buttons setIsOpenRegister={setIsOpenRegister}/>
-                <p className={classes.garderobText}>Мы знаем, как сделать лучше твой гардероб!</p>
+                <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300">
+                    <Buttons setIsOpenRegister={setIsOpenRegister}/>
+                </div>
+                <p className={classes.garderobText} data-aos="fade-right">Мы знаем, как сделать лучше твой гардероб!</p>
             </div>
             {/* ABOUT */}
             <div className={classes.about}>
-                <h2>ТЫ</h2>
+                <h2 data-aos="fade-right" data-aos-duration="1300">ТЫ</h2>
                 <div className={classes.points}>
                     <div className={classes.pointsContainer}>
-                        <p>научишься</p>
+                        <p data-aos="fade-left" data-aos-duration="1300">научишься</p>
                         <ul>
-                            <li>Грамотно структурировать свой гардероб.</li>
-                            <li>Создавать стильные образы.</li>
-                            <li>Экономить деньги и время на шопинге.</li>
-                            <li>Свободно вписывать тренды в свои образы.</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">Грамотно структурировать свой гардероб.</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">Создавать стильные образы.</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">Экономить деньги и время на шопинге.</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">Свободно вписывать тренды в свои образы.</li>
                         </ul>
                     </div>
                 </div>
-                <div className={classes.garderob}>
+                <div className={classes.garderob} data-aos="fade-right" data-aos-duration="1300">
                     <img src={garderob} alt="garderob"/>
                     <div className={classes.garderobBlockText}>
                         <h2>ТЕБЯ</h2>
@@ -188,7 +198,7 @@ const Main = (props) => {
                         </span>
                     </div>
                     <div className={classes.collageImgBlock}>
-                        <img src={collage} alt="collage"/>
+                        <img src={collage} alt="collage" data-aos="fade-right" data-aos-duration="1300"/>
                     </div>
                 </div>
                 <div className={classes.collageBlockReverse}>
@@ -207,9 +217,9 @@ const Main = (props) => {
                             гармоничные их сочетания в одежде.
                         </span>
                     </div>
-                    <img src={lesson1} alt="lesson1"/>
+                    <img src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
-                <div className={classes.collageBlock}>
+                <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
                         <p className={classes.sheduleNumber}>3 занятие 7 апреля 19.30</p>
                         <p className={classes.sheduleInfo}>
@@ -225,7 +235,7 @@ const Main = (props) => {
                             идеальные пропорции и длины в одежде.
                         </span>
                     </div>
-                    <img src={lesson2} className={classes.lessonImage} alt="lesson2"/>
+                    <img src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlockReverse}>
                     <div className={classes.collageText}>
@@ -244,9 +254,9 @@ const Main = (props) => {
                             можно заменить твои устаревшие вещи. 
                         </span>
                     </div>
-                    <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3"/>
+                    <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
-                <div className={classes.collageBlock}>
+                <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
                         <p className={classes.sheduleNumber}>5 занятие 12 апреля 19.30</p>
                         <p className={classes.sheduleInfo}>
@@ -263,41 +273,43 @@ const Main = (props) => {
                             как офлайн, так и онлайн шопинга.
                         </span>
                     </div>
-                    <img src={lesson4} className={classes.lessonImage} alt="lesson4"/>
+                    <img src={lesson4} className={classes.lessonImage + " " + classes.lastImg} alt="lesson4" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
             </div>
             {/* INFO */}
             <div className={classes.info}>
-                <img src={quadro} alt="quadro"/>
-                <p>После лекций ты получишь ВСЕ записи и материалы курса, 
+                <img src={quadro} alt="quadro" data-aos="zoom-in" data-aos-duration="500"/>
+                <p data-aos="fade" data-aos-duration="1300">После лекций ты получишь ВСЕ записи и материалы курса, 
                     которые можешь просматривать в любое время.
                 </p>
-                <p>
+                <p data-aos="fade" data-aos-duration="1300">
                     Все лекции и дополнительные материалы будут доступны 
                     в течении шести месяцев после окончания курса.
                 </p>
-                <p>
+                <p data-aos="fade" data-aos-duration="1300">
                     Telegram-чат со всеми участниками курса для общения 
                     и обсуждения заданий.
                 </p>
-                <p>
+                <p data-aos="fade" data-aos-duration="1300">
                     Мы отправим тебе чек-листы и интересные статьи по нашим темам.
                 </p>
             </div>
             <span id="trainers" ref={trainersRef}></span>
-            <Buttons setIsOpenRegister={setIsOpenRegister}/>
+            <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300">
+                <Buttons setIsOpenRegister={setIsOpenRegister}/>
+            </div>
             {/* TRAINERS */}
             <div className={classes.trainers}>
-                <h2>ТРЕНЕРЫ КУРСА:</h2>
-                <div className={classes.trener}>
-                    <img src={trener1_1} alt="trener"/>
+                <h2 data-aos="fade-down" data-aos-duration="1300">ТРЕНЕРЫ КУРСА:</h2>
+                <div className={classes.trener} data-aos="fade-left" data-aos-duration="1300">
+                    <img src={trener1_1} alt="trener" className={classes.trenerImage}/>
                     <div className={classes.trenerInfo}>
                         <h3>Анна Николенко</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="">
+                            <a href="https://www.facebook.com/aneta.nikolenko">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="">
+                            <a href="https://www.instagram.com/anita_nikolenko">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
@@ -321,7 +333,7 @@ const Main = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.dopInfo}>
+                <div className={classes.dopInfo} data-aos="fade-right" data-aos-duration="1300">
                     <p className={classes.dopHeader}>
                         Анна прошла обучение в Международном учебном центре <br/>
                         «Bogomolov’ Image School».
@@ -336,19 +348,20 @@ const Main = (props) => {
                         <li>Леси Патоки - основательница Patoka Studio.</li>
                     </ul>
                 </div>
-                <div className={classes.trenerReverse}>
+                <img src={arrows} className={classes.arrows}/>
+                <div className={classes.trenerReverse} data-aos="fade-down" data-aos-duration="1300">
                     <img src={trener2_2} alt="trener"/>
                     <div className={classes.trenerInfo}>
                         <h3>Евгения Донцова</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="">
+                            <a href="https://www.facebook.com/evgndntsv">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="">
+                            <a href="https://www.instagram.com/stylist_dontsova">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
-                        <div className={classes.trenerWho}>
+                        <div className={classes.trenerWho + " " + classes.donc}>
                             <p>стилист проекта Profi Fashion;</p>
                             <p>Член Ассоциации стилистов Украины;</p>
                             <p>художник по костюмам в Театр искренних непрофессиональных актеров;</p>
@@ -367,7 +380,7 @@ const Main = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.dopInfo}>
+                <div className={classes.dopInfo} data-aos="fade-left" data-aos-duration="1300">
                     <p>Евгения обучалась:</p>
                     <ul>
                         <li>Академия стиля и дизайна Andre TAN по специальности “Стилист”, “Дизайн одежды”, “Fashion иллюстрация”;</li>
@@ -375,15 +388,17 @@ const Main = (props) => {
                         <li>Открытый международный университет развития человека “Украина”, бакалавр по специальности “Искусствоведение”;</li>
                         <li>Национальная академия руководящих кадров культуры и искусств, магистр по специальности “Дизайн среды”;</li>
                     </ul>
-                    <span id="signup" ref={signupRef}></span>
+                    <span></span>
                 </div>
                 
             </div>
-            <Buttons setIsOpenRegister={setIsOpenRegister}/>
+            <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300" id="signup" ref={signupRef}>
+                <Buttons setIsOpenRegister={setIsOpenRegister}/>
+            </div>
             {/* PAYMENT */}
             <div className={classes.payment}>
-                <span>Стоимость курса</span>
-                <p>750 грн / 29 $</p>
+                <span data-aos="fade" data-aos-duration="1300">Стоимость курса</span>
+                <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="400">750 грн / 29 $</p>
                 <hr/>
             </div>
             {/* FOOTER */}
@@ -391,25 +406,29 @@ const Main = (props) => {
                 <div className={classes.links}>
                     <h5>Мы в соц.сетях</h5>
                     <div className={classes.linksContainer}>
-                        <a href="">
+                        <a href="https://www.facebook.com/profifashion">
                             <img src={fb} alt="fb"/>
                         </a>
-                        <a href="">
+                        <a href="https://www.instagram.com/profi.fashion">
                             <img src={insta} alt="insta"/>
                         </a>
                     </div>
                 </div>
-                <div className={classes.publications}>
+                <div className={classes.publications} data-aos="fade-down" data-aos-duration="1600" data-aos-delay="300">
                     <h5>Наши публикации:</h5>
-                    <a href="">Как с иголочки: идеи стильных подарков <br/>к Новому году</a>
-                    <a href="">На стиле: 12 главных модных трендов <br/> осень-зима 2020-2021</a>
-                    <a href="">Как создать женский осенний офисный гардероб: <br/>советы имидж-дизайнера</a>
-                    <a href="">Геометрия внешности на практике по теории Кибби</a>
-                    <a href="">Бизнес стиль: дикие и профессиональные</a>
+                    <a href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">Как с иголочки: идеи стильных подарков <br/>к Новому году</a>
+                    <a href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">На стиле: 12 главных модных трендов <br/> осень-зима 2020-2021</a>
+                    <a href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">Как создать женский осенний офисный гардероб: <br/>советы имидж-дизайнера</a>
+                    <a href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">Геометрия внешности на практике по теории Кибби</a>
+                    <a href="http://www.profi-fashion.com/business-style">Бизнес стиль: дикие и профессиональные</a>
                 </div>
             </footer>
         </div>
     )
 }
 
-export default Main;
+let mapStateToProps = (state) => ({
+    isFetching: state.common.isFetching
+});
+
+export default connect(mapStateToProps, {})(Main);

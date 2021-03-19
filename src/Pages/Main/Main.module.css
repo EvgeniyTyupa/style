@@ -42,7 +42,7 @@
     border-bottom: 4px solid transparent;
     height: 100%;
     display: flex;
-    transition-duration: .6s;
+    transition-duration: .6s !important;
     align-items: center;
 }
 .menu a:hover{
@@ -57,6 +57,13 @@
     transition-duration: .3s;
     box-shadow: 0 0 20px -8px grey;
     background-color: white;
+}
+.burger{
+    display: none;
+    background-color: white;
+    width: 100%;
+    height: 60px;
+    align-items: center;
 }
 
 
@@ -487,6 +494,9 @@
     letter-spacing: 0.02em;
     margin-bottom: 5px;
 }
+.arrows{
+    display: none;
+}
 
 
 /* PAYMENT */
@@ -580,7 +590,234 @@
         margin-left: auto;
         margin-right: 0;
     }
-    .trener{
+}
 
+@media screen and (max-width: 1400px){
+    .homeHeader{
+        left: 50px;
+    }
+    .beSmartText{
+        right: -40px;
+    }
+    .garderobText{
+        font-size: 28px;
+    }
+    .shedule p{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .burger{
+        display: flex;
+    }
+    .menuContainer{
+        padding: 0;
+    }
+    .home{
+        margin-top: 200px;
+    }
+    .homeHeader{
+        left: 0;
+        display: block;
+        position: relative;
+        top: 0;
+        align-self: center;
+    }
+    .homeHeader h1{
+        font-size: 288px;
+    }
+    .homeHeader h2, .homeHeader p{
+        display: inline;
+    }
+    .homeHeader h2{
+        font-size: 96px;
+        font-weight: 400;
+    }
+    .homeHeader p{
+        margin-left: 37px;
+        font-size: 48px;
+        font-weight: 300;
+    }
+    .homeImages{
+        margin-top: 50px;
+        padding-bottom: 0;
+        border: 0;
+    }
+    .homeImages img{
+        left: 0;
+    }
+    .beSmartText{
+        position: initial;
+        transform: initial;
+        margin-top: 64px;
+        border-bottom: 5px solid #7C0061;
+        width: 80%;
+        text-align: center;
+        padding-bottom: 90px;
+        font-size: 36px;
+    }
+    .garderobText{
+        text-align: center;
+    }
+    .garderob{
+        margin-top: 127px;
+        padding-right: 50px;
+        padding-left: 0;
+    }
+    .garderob img{
+        margin-right: 64px;
+    }
+    .garderobBlockText{
+        width: 45%;
+    }
+    .shedule{
+        margin-top: 100px;
+    }
+    .collageImgBlock{
+        margin-top: 435px;
+    }
+    .collageBlockReverse{
+        flex-direction: column;
+    }
+    .collageText{
+        width: 70%;
+    }
+    .collageBlockReverse img{
+        width: 65%;
+        margin-left: auto;
+        position: relative;
+        top: -50px;
+    }
+    .adaptiveCollage{
+        flex-direction: column;
+    }
+    .adaptiveCollage img{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        top: 0;
+        margin-top: 130px;
+    }
+    .lessonReverseImage{
+        top: -50px !important;
+    }
+    .lastImg{
+        margin-left: auto;
+        margin-bottom: 50px;
+        margin-right: 50px !important;
+    }
+    .info{
+        width: 80%;
+    }
+    .trener{
+        flex-direction: column;
+        align-items: center;
+    }
+    .trenerImage{
+        margin-bottom: 45px;
+    }
+    .trenerInfo{
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        text-align: center;
+    }
+    .trenerSubInfo{
+        display: none;
+    }
+    .trenerLinks img{
+        width: 150px;
+    }
+    .trenerLinks{
+        margin-top: 50px;
+        height: 150px;
+    }
+    .trenerLinks a{
+        margin-right: 50px;
+    }
+    .trenerLinks a + a{
+        margin-left: 50px;
+    }
+    .trenerInfo h3{
+        margin-block-end: 0;
+    }
+    .trenerWho{
+        margin-top: 60px;
+        font-size: 48px;
+    }
+    .dopInfo{
+        display: none;
+    }
+    .trenerReverse{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 175px;
+    }
+    .trenerReverse img{
+        margin-bottom: 77px;
+    }
+    .arrows{
+        display: block;
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+    .trenerInfo h3{
+        font-size: 64px;
+    }
+    .donc{
+        display: none;
+    }
+    .payment{
+        margin-top: 150px;
+    }
+    .payment span{
+        font-size: 48px;
+    }
+    .payment p{
+        font-size: 96px;
+    }
+    .payment hr{
+        border: 2px solid black;
+    }
+    .links h5{
+        font-size: 48px;
+        margin-bottom: 140px;
+    }
+    .links img{
+        width: 150px;
+    }
+    .links a{
+        margin-left: 100px;
+        
+    }
+    .links a + a{
+        margin-right: 100px;
+    }
+    .publications h5{
+        font-size: 48px;
+    }
+    .publications a{
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .menu{
+        width: 50%;
+        left: 0;
+        height: max-content;
+        padding: 0;
+    }
+    .menuContainer{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10% 20% 0% 10%;
+        box-sizing: border-box;
+        background: #F5F5F5;
+    }
+    .menuContainer a{
+        margin-bottom: 85px;
     }
 }

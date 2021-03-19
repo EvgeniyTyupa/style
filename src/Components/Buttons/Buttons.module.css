@@ -8,6 +8,7 @@
     height: 102px;
     border-radius: 0;
     transition-duration: .5s;
+    padding: 0 !important;
 }
 .main button a{
     width: 100%;
@@ -17,6 +18,16 @@
     font-family: 'Roboto';
     text-decoration: none;
     transition-duration: .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main button span{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .signup{
     border: 2px solid #000000 !important;
