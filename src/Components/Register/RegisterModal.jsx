@@ -1,5 +1,5 @@
 import { Button, makeStyles, TextField } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './RegisterModal.module.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -40,6 +40,13 @@ const RegisterModal = (props) => {
 
     return(
         <div className={classes.main}>
+            {props.isRegistered ? 
+            <form data-aos="zoom-in" data-aos-duration="200">
+                <Button onClick={()=>{props.setIsOpenRegister(false)}}>
+                    <NavLink to="/">&#x2715;</NavLink>
+                </Button>
+                <p>Спасибо! Вы успешно зарегистрировались.</p>
+            </form> : 
             <form data-aos="zoom-in" data-aos-duration="200" onSubmit={handleSubmit(onSubmit)}>
                 <Button onClick={()=>{props.setIsOpenRegister(false)}}>
                     <NavLink to="/">&#x2715;</NavLink>
@@ -57,12 +64,15 @@ const RegisterModal = (props) => {
                     {errors.email && errors.email.type === "required" && <p className={classes.error}>Обязательное поле!</p>}
                 </div>
                 <Button type="submit" className={classes.submit}>Регистрация</Button>
-            </form>
+            </form>}
         </div>
     );
 }
 
+let mapStateToProps = (state) => ({
+    isRegistered: state.common.isRegistered
+})
 
-export default connect(null, {
+export default connect(mapStateToProps, {
     register
 })(RegisterModal);

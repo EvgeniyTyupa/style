@@ -25,6 +25,7 @@ import fb from '../../Assets/fb.svg';
 import insta from '../../Assets/insta.svg';
 import arrows from '../../Assets/arrows.svg';
 import Burger from '../../Components/Burger/Burger';
+import Thankyou from '../../Components/Thankyou/Thankyou';
 
 const Main = (props) => {
     const [scrolledNav, setScrolledNav] = useState(false);
@@ -109,12 +110,25 @@ const Main = (props) => {
             window.removeEventListener('scroll', handleScroll);
         }
     });
+    const [isThankyouUrl, setIsThankyouUrl] = useState(false);
+
+    useEffect(() => {
+        if(window.location.pathname === "/thankyou"){
+            setIsThankyouUrl(true)
+        }else{
+            setIsThankyouUrl(false);
+        }
+    },[window.location.pathname]);
 
     return(
         <div className={classes.main} id="about" ref={aboutRef}>
             {props.isFetching && <Preloader/>}
+            {isThankyouUrl && <Thankyou setIsThankyouUrl={setIsThankyouUrl}/>}
             {isIsOpenRegister && <RegisterModal url={url} setIsOpenRegister={setIsOpenRegister}/>}
             {/* NAV */}
+            <div className={classes.burger}>
+                <Burger active1={active1} active2={active2} active3={active3} active4={active4}/>
+            </div>
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
                     <Link to="/#about" data-aos="fade-down" className={active1 ? classes.activeLink : ""}>О ЧЕМ</Link>
@@ -144,6 +158,7 @@ const Main = (props) => {
                     <Buttons setIsOpenRegister={setIsOpenRegister}/>
                 </div>
                 <p className={classes.garderobText} data-aos="fade-right">Мы знаем, как сделать лучше твой гардероб!</p>
+                <p className={classes.garderobTextMobile} data-aos="fade-down">Мы знаем, <br/> как сделать лучше<br/> твой гардероб!</p>
             </div>
             {/* ABOUT */}
             <div className={classes.about}>
@@ -306,10 +321,10 @@ const Main = (props) => {
                     <div className={classes.trenerInfo}>
                         <h3>Анна Николенко</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="https://www.facebook.com/aneta.nikolenko">
+                            <a target="_blank" href="https://www.facebook.com/aneta.nikolenko">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="https://www.instagram.com/anita_nikolenko">
+                            <a target="_blank" href="https://www.instagram.com/anita_nikolenko">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
@@ -350,14 +365,14 @@ const Main = (props) => {
                 </div>
                 <img src={arrows} className={classes.arrows}/>
                 <div className={classes.trenerReverse} data-aos="fade-down" data-aos-duration="1300">
-                    <img src={trener2_2} alt="trener"/>
+                    <img src={trener2_2} alt="trener" className={classes.trenerImage}/>
                     <div className={classes.trenerInfo}>
                         <h3>Евгения Донцова</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="https://www.facebook.com/evgndntsv">
+                            <a target="_blank" href="https://www.facebook.com/evgndntsv">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="https://www.instagram.com/stylist_dontsova">
+                            <a target="_blank" href="https://www.instagram.com/stylist_dontsova">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
@@ -406,21 +421,21 @@ const Main = (props) => {
                 <div className={classes.links}>
                     <h5>Мы в соц.сетях</h5>
                     <div className={classes.linksContainer}>
-                        <a href="https://www.facebook.com/profifashion">
+                        <a target="_blank" href="https://www.facebook.com/profifashion">
                             <img src={fb} alt="fb"/>
                         </a>
-                        <a href="https://www.instagram.com/profi.fashion">
+                        <a target="_blank" href="https://www.instagram.com/profi.fashion">
                             <img src={insta} alt="insta"/>
                         </a>
                     </div>
                 </div>
                 <div className={classes.publications} data-aos="fade-down" data-aos-duration="1600" data-aos-delay="300">
                     <h5>Наши публикации:</h5>
-                    <a href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">Как с иголочки: идеи стильных подарков <br/>к Новому году</a>
-                    <a href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">На стиле: 12 главных модных трендов <br/> осень-зима 2020-2021</a>
-                    <a href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">Как создать женский осенний офисный гардероб: <br/>советы имидж-дизайнера</a>
-                    <a href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">Геометрия внешности на практике по теории Кибби</a>
-                    <a href="http://www.profi-fashion.com/business-style">Бизнес стиль: дикие и профессиональные</a>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">Как с иголочки: идеи стильных подарков <br/>к Новому году</a>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">На стиле: 12 главных модных трендов <br/> осень-зима 2020-2021</a>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">Как создать женский осенний офисный гардероб: <br/>советы имидж-дизайнера</a>
+                    <a target="_blank" href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">Геометрия внешности на практике по теории Кибби</a>
+                    <a target="_blank" href="http://www.profi-fashion.com/business-style">Бизнес стиль: дикие и профессиональные</a>
                 </div>
             </footer>
         </div>

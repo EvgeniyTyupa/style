@@ -17,7 +17,7 @@ const Buttons = (props) => {
                <NavLink to="/signup">РЕГИСТРАЦИЯ</NavLink>
            </Button>
            <Button className={classes.payment}>
-               <a href="">ОПЛАТА</a>
+               <a target="_blank" href="https://secure.wayforpay.com/button/baa48468ad862">ОПЛАТА</a>
            </Button>
        </div>
     )

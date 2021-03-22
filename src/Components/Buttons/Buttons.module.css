@@ -63,3 +63,29 @@
     transform: scale(1.03);
 }
 
+
+/* @media screen and (max-width: 1000px){
+    .main button{
+        width: 376px;
+        height: ;
+    }
+} */
+@media screen and (max-width: 568px){
+    .main{
+        flex-direction: column;
+    }
+    .payment{
+        margin: 0 !important;
+    }
+    .signup{
+        margin: 0 !important;
+        margin-bottom: 25px !important;
+    }
+    .main button{
+        width: 100%;
+        height: 75px
+    }
+    .main button a{
+        font-size: 26px;
+    }
+}
