@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/reduxStore';
 import {Provider} from "react-redux";
+import Preloader from './Components/Preloader/Preloader';
+import './Utils/i18n.js';
+
 
 ReactDOM.render(
   <Provider store={store}>
+    <Suspense fallback={<Preloader/>}>
       <App/>
+    </Suspense>
   </Provider>, document.getElementById('root')
 );
 

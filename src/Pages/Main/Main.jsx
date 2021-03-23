@@ -10,6 +10,8 @@ import Preloader from '../../Components/Preloader/Preloader';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+import { useTranslation } from "react-i18next";
+
 import trener1 from '../../Assets/trener1.jpg';
 import trener2 from '../../Assets/trener2.jpg';
 import garderob from '../../Assets/garderob.jpg';
@@ -25,8 +27,11 @@ import fb from '../../Assets/fb.svg';
 import insta from '../../Assets/insta.svg';
 import arrows from '../../Assets/arrows.svg';
 import Burger from '../../Components/Burger/Burger';
+import { MenuItem, TextField } from '@material-ui/core';
 
 const Main = (props) => {
+    const { t, i18n } = useTranslation();
+
     const [scrolledNav, setScrolledNav] = useState(false);
     const [offset, setOffset] = useState(window.scrollY);
 
@@ -110,6 +115,10 @@ const Main = (props) => {
         }
     });
 
+    const changeLanguage = (event) => {
+        i18n.changeLanguage(event.target.value);
+    }
+
     return(
         <div className={classes.main} id="about" ref={aboutRef}>
             {props.isFetching && <Preloader/>}
@@ -117,10 +126,14 @@ const Main = (props) => {
             {/* NAV */}
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
-                    <Link to="/#about" data-aos="fade-down" className={active1 ? classes.activeLink : ""}>О ЧЕМ</Link>
-                    <Link to="/#shedule" data-aos="fade-down" className={active2 ? classes.activeLink : ""}>РАСПИСАНИЕ</Link>
-                    <Link to="/#trainers" data-aos="fade-down" className={active3 ? classes.activeLink : ""}>ТРЕНЕРЫ</Link>
-                    <Link to="/#signup" data-aos="fade-down" className={active4 ? classes.activeLink : ""}>ЗАПИСАТЬСЯ</Link>
+                    <Link to="/#about" data-aos="fade-down" className={active1 ? classes.activeLink : ""}>{t("menu.one")}</Link>
+                    <Link to="/#shedule" data-aos="fade-down" className={active2 ? classes.activeLink : ""}>{t("menu.two")}</Link>
+                    <Link to="/#trainers" data-aos="fade-down" className={active3 ? classes.activeLink : ""}>{t("menu.three")}</Link>
+                    <Link to="/#signup" data-aos="fade-down" className={active4 ? classes.activeLink : ""}>{t("menu.four")}</Link>
+                    <TextField select name="lang" onChange={changeLanguage} defaultValue="ua">
+                        <MenuItem value="ru">RU</MenuItem>
+                        <MenuItem value="ua">UA</MenuItem>
+                    </TextField>
                 </div>
             </nav>
             {/* HOME */}
@@ -129,7 +142,7 @@ const Main = (props) => {
                     <div className={classes.homeHeader}>
                         <h1 data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300">PRO</h1>
                         <h2 data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300">СТИЛЬ</h2>
-                        <p data-aos="fade" data-aos-delay="1100" data-aos-duration="1300">онлайн-интенсив</p>
+                        <p data-aos="fade" data-aos-delay="1100" data-aos-duration="1300">{t("home.online")}</p>
                     </div>
                     <div className={classes.homeImages} data-aos="fade-up" data-aos-delay="400" data-aos-duration="1300">
                         <img src={trener1} alt="trener1"/>
@@ -138,24 +151,24 @@ const Main = (props) => {
                     <span className={classes.beSmartText}>Be Smart, Be Fashion!</span>
                 </div>
                 <div className={classes.date}>
-                    <p>2 апреля - 12 апреля</p>
+                    <p>{t("home.date")}</p>
                 </div>
                 <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300">
                     <Buttons setIsOpenRegister={setIsOpenRegister}/>
                 </div>
-                <p className={classes.garderobText} data-aos="fade-right">Мы знаем, как сделать лучше твой гардероб!</p>
+                <p className={classes.garderobText} data-aos="fade-right">{t("garderobText")}</p>
             </div>
             {/* ABOUT */}
             <div className={classes.about}>
-                <h2 data-aos="fade-right" data-aos-duration="1300">ТЫ</h2>
+                <h2 data-aos="fade-right" data-aos-duration="1300">{t("about.you")}</h2>
                 <div className={classes.points}>
                     <div className={classes.pointsContainer}>
-                        <p data-aos="fade-left" data-aos-duration="1300">научишься</p>
+                        <p data-aos="fade-left" data-aos-duration="1300">{t("about.learn")}</p>
                         <ul>
-                            <li data-aos="fade-right" data-aos-duration="1300">Грамотно структурировать свой гардероб.</li>
-                            <li data-aos="fade-right" data-aos-duration="1300">Создавать стильные образы.</li>
-                            <li data-aos="fade-right" data-aos-duration="1300">Экономить деньги и время на шопинге.</li>
-                            <li data-aos="fade-right" data-aos-duration="1300">Свободно вписывать тренды в свои образы.</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">{t("about.pointOne")}</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">{t("about.pointTwo")}</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">{t("about.pointThree")}</li>
+                            <li data-aos="fade-right" data-aos-duration="1300">{t("about.pointFour")}</li>
                         </ul>
                     </div>
                 </div>
