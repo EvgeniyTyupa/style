@@ -27,9 +27,28 @@ import fb from '../../Assets/fb.svg';
 import insta from '../../Assets/insta.svg';
 import arrows from '../../Assets/arrows.svg';
 import Burger from '../../Components/Burger/Burger';
-import { MenuItem, TextField } from '@material-ui/core';
+import { makeStyles, MenuItem, TextField } from '@material-ui/core';
+import Thankyou from '../../Components/Thankyou/Thankyou';
+
+const useStyles = makeStyles({
+    root: {
+        '& .MuiInputBase-root': {
+            fontSize: "2rem",
+            fontWeight: 300
+        },
+        '& .MuiInput-underline:before':{
+            borderBottom: 0
+        },
+        '& .MuiInput-underline:after':{
+            borderBottom: "2px solid #7C0061"
+        }
+    }
+})
+
 
 const Main = (props) => {
+    const material = useStyles();
+
     const { t, i18n } = useTranslation();
 
     const [scrolledNav, setScrolledNav] = useState(false);
@@ -114,6 +133,15 @@ const Main = (props) => {
             window.removeEventListener('scroll', handleScroll);
         }
     });
+    const [isThankyouUrl, setIsThankyouUrl] = useState(false);
+
+    useEffect(() => {
+        if(window.location.pathname === "/thankyou"){
+            setIsThankyouUrl(true)
+        }else{
+            setIsThankyouUrl(false);
+        }
+    },[window.location.pathname]);
 
     const changeLanguage = (event) => {
         i18n.changeLanguage(event.target.value);
@@ -122,15 +150,19 @@ const Main = (props) => {
     return(
         <div className={classes.main} id="about" ref={aboutRef}>
             {props.isFetching && <Preloader/>}
+            {isThankyouUrl && <Thankyou setIsThankyouUrl={setIsThankyouUrl}/>}
             {isIsOpenRegister && <RegisterModal url={url} setIsOpenRegister={setIsOpenRegister}/>}
             {/* NAV */}
+            <div className={classes.burger}>
+                <Burger changeLanguage={changeLanguage} active1={active1} active2={active2} active3={active3} active4={active4}/>
+            </div>
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
                     <Link to="/#about" data-aos="fade-down" className={active1 ? classes.activeLink : ""}>{t("menu.one")}</Link>
                     <Link to="/#shedule" data-aos="fade-down" className={active2 ? classes.activeLink : ""}>{t("menu.two")}</Link>
                     <Link to="/#trainers" data-aos="fade-down" className={active3 ? classes.activeLink : ""}>{t("menu.three")}</Link>
                     <Link to="/#signup" data-aos="fade-down" className={active4 ? classes.activeLink : ""}>{t("menu.four")}</Link>
-                    <TextField select name="lang" onChange={changeLanguage} defaultValue="ua">
+                    <TextField classes={material} select name="lang" onChange={changeLanguage} defaultValue="ua">
                         <MenuItem value="ru">RU</MenuItem>
                         <MenuItem value="ua">UA</MenuItem>
                     </TextField>
@@ -157,6 +189,7 @@ const Main = (props) => {
                     <Buttons setIsOpenRegister={setIsOpenRegister}/>
                 </div>
                 <p className={classes.garderobText} data-aos="fade-right">{t("garderobText")}</p>
+                <p className={classes.garderobTextMobile} data-aos="fade-down">{t("garderobTextMobile.we")} <br/> {t("garderobTextMobile.more")}<br/> {t("garderobTextMobile.garderob")}</p>
             </div>
             {/* ABOUT */}
             <div className={classes.about}>
@@ -175,15 +208,12 @@ const Main = (props) => {
                 <div className={classes.garderob} data-aos="fade-right" data-aos-duration="1300">
                     <img src={garderob} alt="garderob"/>
                     <div className={classes.garderobBlockText}>
-                        <h2>ТЕБЯ</h2>
-                        <p>ждет</p>
+                        <h2>{t("about.forYou")}</h2>
+                        <p>{t("about.wait")}</p>
                         <ul>
-                            <li>5 лекций с углублением в современный мир моды.</li>
-                            <li>Формирование гардероба с учетом особенностей внешности,
-                                фигуры, современных тенденций, 
-                                образа жизни и личных вкусовых предпочтений.
-                            </li>
-                            <li id="shedule" ref={sheduleRef}>Обратная связь стилистов.</li>
+                            <li>{t("about.pointSix")}</li>
+                            <li>{t("about.pointSeven")}</li>
+                            <li id="shedule" ref={sheduleRef}>{t("about.pointEight")}</li>
                         </ul>
                     </div>
                 </div>
@@ -192,23 +222,11 @@ const Main = (props) => {
             <div className={classes.shedule}>
                 <div className={classes.collageBlock}>
                     <div className={classes.collageText}>
-                        <h2>РАСПИСАНИЕ <br/> ЗАНЯТИЙ</h2>
-                        <p className={classes.sheduleNumber}>1 занятие 2 апреля 19.30</p>
-                        <p className={classes.sheduleInfo}>
-                            Правила создания 
-                            индивидуального стиля. 
-                            Базовый гардероб. 
-                            Формирование капсулы.
-                        </p>
+                        <h2>{t("shedule.titleOne")} <br/> {t("shedule.titleTwo")}</h2>
+                        <p className={classes.sheduleNumber}>{t("shedule.lessonOneTitle")}</p>
+                        <p className={classes.sheduleInfo}>{t("shedule.lessonOneInfo")}</p>
                         <hr/>
-                        <span>
-                            Ты научишься составлять диаграмму 
-                            занятости. Узнаешь где брать идеи 
-                            для вдохновения и научишься составлять 
-                            мудборд. Ты узнаешь, что такое база 
-                            и научишься составлять капсулы 
-                            для всех жизненных ситуаций.
-                        </span>
+                        <span>{t("shedule.lessonOneSub")}</span>
                     </div>
                     <div className={classes.collageImgBlock}>
                         <img src={collage} alt="collage" data-aos="fade-right" data-aos-duration="1300"/>
@@ -216,75 +234,51 @@ const Main = (props) => {
                 </div>
                 <div className={classes.collageBlockReverse}>
                     <div className={classes.collageText}>
-                        <p className={classes.sheduleNumber}>2 занятие 5 апреля 19.30</p>
+                        <p className={classes.sheduleNumber}>{t("shedule.lesson2.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            Цвет и его роль в одежде.<br/>
-                            Сочетание оттенков и принтов.
+                            {t("shedule.lesson2.info")}<br/>
+                            {t("shedule.lesson2.info1")}
                         </p>
                         <hr/>
-                        <span>
-                            Мы познакомим тебя с психологией цвета 
-                            и как это влияет на формирование образа. 
-                            Ты поймешь принципы в работе с цветами 
-                            и принтами и научишься составлять 
-                            гармоничные их сочетания в одежде.
-                        </span>
+                        <span>{t("shedule.lesson2.sub")} </span>
                     </div>
                     <img src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
-                        <p className={classes.sheduleNumber}>3 занятие 7 апреля 19.30</p>
+                        <p className={classes.sheduleNumber}>{t("shedule.lesson3.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            Особенности коррекции<br/>
-                            фигуры.
+                            {t("shedule.lesson3.info")}<br/>
+                            {t("shedule.lesson3.info1")}
                         </p>
                         <hr/>
-                        <span>
-                            Теперь ты сможешь определить свой 
-                            тип фигуры и научишься корректировать 
-                            ее с помощью правильно подобранной 
-                            одежды. Сможешь определить свои 
-                            идеальные пропорции и длины в одежде.
-                        </span>
+                        <span>{t("shedule.lesson3.sub")}</span>
                     </div>
                     <img src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlockReverse}>
                     <div className={classes.collageText}>
-                        <p className={classes.sheduleNumber}>4 занятие 5 апреля 19.30</p>
+                        <p className={classes.sheduleNumber}>{t("shedule.lesson4.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            Тренды весеннего гардероба.<br/>
-                            Устаревшие вещи и их <br/>
-                            современные аналоги.
+                            {t("shedule.lesson4.info")}<br/>
+                            {t("shedule.lesson4.info1")}<br/>
+                            {t("shedule.lesson4.info2")}
                         </p>
                         <hr/>
-                        <span>
-                            Ты познакомишься с современными 
-                            тенденциями и узнаешь, какие вещи еще 
-                            долго будут популярными, а от каких вещей 
-                            лучше отказаться. А так же узнаешь чем 
-                            можно заменить твои устаревшие вещи. 
-                        </span>
+                        <span>{t("shedule.lesson4.sub")}</span>
                     </div>
                     <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
-                        <p className={classes.sheduleNumber}>5 занятие 12 апреля 19.30</p>
+                        <p className={classes.sheduleNumber}>{t("shedule.lesson5.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            Разбор гардероба.<br/>
-                            Правила онлайн <br/>
-                            и офлайн шопинга.
+                            {t("shedule.lesson5.info")}<br/>
+                            {t("shedule.lesson5.info1")} <br/>
+                            {t("shedule.lesson5.info2")}
                         </p>
                         <hr/>
-                        <span>
-                            Ты получишь четкую пошаговую 
-                            инструкцию для качественного разбора 
-                            гардероба. Научишься составлять 
-                            шопинг-лист и узнаешь о всех тонкостях 
-                            как офлайн, так и онлайн шопинга.
-                        </span>
+                        <span>{t("shedule.lesson5.sub")}</span>
                     </div>
                     <img src={lesson4} className={classes.lessonImage + " " + classes.lastImg} alt="lesson4" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
@@ -292,20 +286,10 @@ const Main = (props) => {
             {/* INFO */}
             <div className={classes.info}>
                 <img src={quadro} alt="quadro" data-aos="zoom-in" data-aos-duration="500"/>
-                <p data-aos="fade" data-aos-duration="1300">После лекций ты получишь ВСЕ записи и материалы курса, 
-                    которые можешь просматривать в любое время.
-                </p>
-                <p data-aos="fade" data-aos-duration="1300">
-                    Все лекции и дополнительные материалы будут доступны 
-                    в течении шести месяцев после окончания курса.
-                </p>
-                <p data-aos="fade" data-aos-duration="1300">
-                    Telegram-чат со всеми участниками курса для общения 
-                    и обсуждения заданий.
-                </p>
-                <p data-aos="fade" data-aos-duration="1300">
-                    Мы отправим тебе чек-листы и интересные статьи по нашим темам.
-                </p>
+                <p data-aos="fade" data-aos-duration="1300">{t("info.one")}</p>
+                <p data-aos="fade" data-aos-duration="1300">{t("info.two")}</p>
+                <p data-aos="fade" data-aos-duration="1300">{t("info.three")}</p>
+                <p data-aos="fade" data-aos-duration="1300">{t("info.four")}</p>
             </div>
             <span id="trainers" ref={trainersRef}></span>
             <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300">
@@ -313,93 +297,93 @@ const Main = (props) => {
             </div>
             {/* TRAINERS */}
             <div className={classes.trainers}>
-                <h2 data-aos="fade-down" data-aos-duration="1300">ТРЕНЕРЫ КУРСА:</h2>
+                <h2 data-aos="fade-down" data-aos-duration="1300">{t("treners.title")}</h2>
                 <div className={classes.trener} data-aos="fade-left" data-aos-duration="1300">
                     <img src={trener1_1} alt="trener" className={classes.trenerImage}/>
                     <div className={classes.trenerInfo}>
-                        <h3>Анна Николенко</h3>
+                        <h3>{t("treners.one.title")}</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="https://www.facebook.com/aneta.nikolenko">
+                            <a target="_blank" href="https://www.facebook.com/aneta.nikolenko">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="https://www.instagram.com/anita_nikolenko">
+                            <a target="_blank" href="https://www.instagram.com/anita_nikolenko">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
                         <div className={classes.trenerWho}>
-                            <p>Имидж-дизайнер проекта Profi Fashion;</p>
-                            <p>Член Ассоциации стилистов Украины;</p>
-                            <p>Соосновательница бренда одежды ANude sportswear;</p>
-                            <p>Спикер модных изданий;</p>
+                            <p>{t("treners.one.who.one")}</p>
+                            <p>{t("treners.one.who.two")}</p>
+                            <p>{t("treners.one.who.three")}</p>
+                            <p>{t("treners.one.who.four")}</p>
                         </div>
                         <div className={classes.trenerSubInfo}>
-                            <h4>Автор программ по стилю:</h4>
-                            <p>Онлайн-лекция: о типажах фигур и подборе фасонов</p>
-                            <p>Онлайн-лекция: Домашняя фотосессия, от идеи до реализации</p>
-                            <p>Онлайн-лекция: Коды внешности</p>
+                            <h4>{t("treners.one.sub.one")}</h4>
+                            <p>{t("treners.one.sub.two")}</p>
+                            <p>{t("treners.one.sub.three")}</p>
+                            <p>{t("treners.one.sub.four")}</p>
                         </div>
                         <div className={classes.trenerSubInfo}>
-                            <h4>Соавтор курсов:</h4>
-                            <p>Онлайн-интенсив: Гардероб. Перезагрузка.</p>
-                            <p>Онлайн-интенсив: Pro Стиль</p>
-                            <p>Онлайн-интенсив: Pro Стиль (winter edition)</p>
+                            <h4>{t("treners.one.sub.five")}</h4>
+                            <p>{t("treners.one.sub.six")}</p>
+                            <p>{t("treners.one.sub.seven")}</p>
+                            <p>{t("treners.one.sub.eight")}</p>
                         </div>
                     </div>
                 </div>
                 <div className={classes.dopInfo} data-aos="fade-right" data-aos-duration="1300">
                     <p className={classes.dopHeader}>
-                        Анна прошла обучение в Международном учебном центре <br/>
+                        {t("treners.one.dop.one")}<br/>
                         «Bogomolov’ Image School».
                     </p>
-                    <p>Училась у лучших экспертов в мире моды:</p>
+                    <p>{t("treners.one.dop.two")}</p>
                     <ul>
-                        <li>Константина Богомолова - имидж-дизайнер и аналитик моды, руководитель Международного учебного центра «Bogomolov’ Image School»;</li>
-                        <li>Элги Хомицкой - имидж-дизайнер, руководитель “Elga Homitska Image House”</li>
-                        <li>Нади Агеевой - директор Международной Школы Стиля и Имиджа;</li>
-                        <li>Аны Варавы - редактор L’Officiel Украина;</li>
-                        <li>Лианы Белякович - аналитик, прогнозист моды;</li>
-                        <li>Леси Патоки - основательница Patoka Studio.</li>
+                        <li>{t("treners.one.dop.three")}</li>
+                        <li>{t("treners.one.dop.four")}</li>
+                        <li>{t("treners.one.dop.five")}</li>
+                        <li>{t("treners.one.dop.six")}</li>
+                        <li>{t("treners.one.dop.seven")}</li>
+                        <li>{t("treners.one.dop.eight")}</li>
                     </ul>
                 </div>
                 <img src={arrows} className={classes.arrows}/>
                 <div className={classes.trenerReverse} data-aos="fade-down" data-aos-duration="1300">
-                    <img src={trener2_2} alt="trener"/>
+                    <img src={trener2_2} alt="trener" className={classes.trenerImage}/>
                     <div className={classes.trenerInfo}>
-                        <h3>Евгения Донцова</h3>
+                        <h3>{t("treners.two.title")}</h3>
                         <div className={classes.trenerLinks}>
-                            <a href="https://www.facebook.com/evgndntsv">
+                            <a target="_blank" href="https://www.facebook.com/evgndntsv">
                                 <img src={fb} alt="fb"/>
                             </a>
-                            <a href="https://www.instagram.com/stylist_dontsova">
+                            <a target="_blank" href="https://www.instagram.com/stylist_dontsova">
                                 <img src={insta} alt="insta"/>
                             </a>
                         </div>
                         <div className={classes.trenerWho + " " + classes.donc}>
-                            <p>стилист проекта Profi Fashion;</p>
-                            <p>Член Ассоциации стилистов Украины;</p>
-                            <p>художник по костюмам в Театр искренних непрофессиональных актеров;</p>
-                            <p>Спикер модных изданий;</p>
+                            <p>{t("treners.two.who.one")}</p>
+                            <p>{t("treners.two.who.two")}</p>
+                            <p>{t("treners.two.who.three")}</p>
+                            <p>{t("treners.two.who.four")}</p>
                         </div>
                         <div className={classes.trenerSubInfo}>
-                            <h4>Автор программ по стилю:</h4>
-                            <p>Онлайн-лекция: Подготовка к групповой фотосессии, от идеи до реализации</p>
-                            <p>Онлайн-лекция: Коды внешности</p>
+                            <h4>{t("treners.two.sub.one")}</h4>
+                            <p>{t("treners.two.sub.two")}</p>
+                            <p>{t("treners.two.sub.three")}</p>
                         </div>
                         <div className={classes.trenerSubInfo}>
-                            <h4>Соавтор курсов:</h4>
-                            <p>Онлайн-интенсив: Гардероб. Перезагрузка.</p>
-                            <p>Онлайн-интенсив: Pro Стиль</p>
-                            <p>Онлайн-интенсив: Pro Стиль (winter edition)</p>
+                            <h4>{t("treners.two.sub.four")}</h4>
+                            <p>{t("treners.two.sub.five")}</p>
+                            <p>{t("treners.two.sub.six")}</p>
+                            <p>{t("treners.two.sub.seven")}</p>
                         </div>
                     </div>
                 </div>
                 <div className={classes.dopInfo} data-aos="fade-left" data-aos-duration="1300">
-                    <p>Евгения обучалась:</p>
+                    <p>{t("treners.two.dop.one")}</p>
                     <ul>
-                        <li>Академия стиля и дизайна Andre TAN по специальности “Стилист”, “Дизайн одежды”, “Fashion иллюстрация”;</li>
-                        <li>Киевский учебный центр “Лыбидь”, по программе “Мода, стиль и дизайн одежды”;</li>
-                        <li>Открытый международный университет развития человека “Украина”, бакалавр по специальности “Искусствоведение”;</li>
-                        <li>Национальная академия руководящих кадров культуры и искусств, магистр по специальности “Дизайн среды”;</li>
+                        <li>{t("treners.two.dop.two")}</li>
+                        <li>{t("treners.two.dop.three")}</li>
+                        <li>{t("treners.two.dop.four")}</li>
+                        <li>{t("treners.two.dop.five")}</li>
                     </ul>
                     <span></span>
                 </div>
@@ -410,30 +394,30 @@ const Main = (props) => {
             </div>
             {/* PAYMENT */}
             <div className={classes.payment}>
-                <span data-aos="fade" data-aos-duration="1300">Стоимость курса</span>
+                <span data-aos="fade" data-aos-duration="1300">{t("payment")}</span>
                 <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="400">750 грн / 29 $</p>
                 <hr/>
             </div>
             {/* FOOTER */}
             <footer className={classes.footer}>
                 <div className={classes.links}>
-                    <h5>Мы в соц.сетях</h5>
+                    <h5>{t("social")}</h5>
                     <div className={classes.linksContainer}>
-                        <a href="https://www.facebook.com/profifashion">
+                        <a target="_blank" href="https://www.facebook.com/profifashion">
                             <img src={fb} alt="fb"/>
                         </a>
-                        <a href="https://www.instagram.com/profi.fashion">
+                        <a target="_blank" href="https://www.instagram.com/profi.fashion">
                             <img src={insta} alt="insta"/>
                         </a>
                     </div>
                 </div>
                 <div className={classes.publications} data-aos="fade-down" data-aos-duration="1600" data-aos-delay="300">
-                    <h5>Наши публикации:</h5>
-                    <a href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">Как с иголочки: идеи стильных подарков <br/>к Новому году</a>
-                    <a href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">На стиле: 12 главных модных трендов <br/> осень-зима 2020-2021</a>
-                    <a href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">Как создать женский осенний офисный гардероб: <br/>советы имидж-дизайнера</a>
-                    <a href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">Геометрия внешности на практике по теории Кибби</a>
-                    <a href="http://www.profi-fashion.com/business-style">Бизнес стиль: дикие и профессиональные</a>
+                    <h5>{t("publications.title")}</h5>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">{t("publications.one")} <br/>{t("publications.one1")}</a>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">{t("publications.two")} <br/> {t("publications.two1")}</a>
+                    <a target="_blank" href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">{t("publications.three")}<br/>{t("publications.three1")}</a>
+                    <a target="_blank" href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">{t("publications.four")}</a>
+                    <a target="_blank" href="http://www.profi-fashion.com/business-style">{t("publications.four")}</a>
                 </div>
             </footer>
         </div>

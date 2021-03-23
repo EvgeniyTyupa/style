@@ -64,6 +64,10 @@
     width: 100%;
     height: 60px;
     align-items: center;
+    padding-left: 10%;
+    padding-top: 3%;
+    z-index: 100;
+    position: fixed;
 }
 
 
@@ -156,6 +160,9 @@
     margin-block-start: 152px;
     margin-block-end: 0;
     text-align: center;
+}
+.garderobTextMobile{
+    display: none;
 }
 
 /* ABOUT */
@@ -608,9 +615,6 @@
 }
 
 @media screen and (max-width: 1200px){
-    .burger{
-        display: flex;
-    }
     .menuContainer{
         padding: 0;
     }
@@ -766,6 +770,9 @@
     .trenerInfo h3{
         font-size: 64px;
     }
+    /* .donc{
+        display: none;
+    } */
     .payment{
         margin-top: 150px;
     }
@@ -802,10 +809,11 @@
 
 @media screen and (max-width: 1000px){
     .menu{
-        width: 50%;
+        width: 100%;
         left: 0;
         height: max-content;
         padding: 0;
+        display: none;
     }
     .menuContainer{
         flex-direction: column;
@@ -813,8 +821,386 @@
         padding: 10% 20% 0% 10%;
         box-sizing: border-box;
         background: #F5F5F5;
+       
     }
     .menuContainer a{
         margin-bottom: 85px;
+    }
+    .home{
+        margin-top: 70px;
+    }
+    .homeHeader{
+        text-align: center;
+    }
+    .homeHeader p, .homeHeader h2{
+        position: relative;
+        top: -50px;
+    }
+    .homeHeader h2{
+        font-size: 68px;
+        font-size: 500;
+    }
+    .homeHeader p{
+        font-size: 36px;
+    }
+    .burger{
+        display: flex;
+    }
+    .homeImages{
+        display: flex;
+    }
+    .homeImages img{
+        width: 47%;
+    }
+    .beSmartText{
+        width: 100%;
+        padding-bottom: 60px;
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .garderobText{
+        display: none;
+    }
+    .garderobTextMobile{
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-size: 32px;
+        font-weight: 500;
+        margin-block-start: 152px;
+        margin-block-end: 0;
+        text-align: center;
+        display: block;
+        line-height: 56px;
+    }
+    .garderob{
+        padding-right: 25px;
+    }
+    .garderob img{
+        width: 48%;
+        margin-top: 25px;
+    }
+    .garderobBlockText p{
+        margin-right: 20px;
+    }
+    .about li{
+        font-size: 24px;
+    }
+    .garderobBlockText h2{
+        margin-block-start: 0;
+    }
+    .shedule p{
+        font-size: 25px;
+    }
+    .shedule span{
+        font-size: 25px;
+    }
+    .collageBlock{
+        display: flex;
+        flex-direction: column;
+    }
+    .collageImgBlock{
+        margin-top: 70px;
+        margin-left: auto;
+        width: 65%;
+        height: max-content;
+        right: -190px;
+    }
+    .collageBlock img{
+        top: -75px;
+    }
+    .collageBlockReverse img{
+        top: 0;
+    }
+    .info{
+        width: 90%;
+    }
+    .trenerImage{
+        width: 65% !important;
+    }
+    .trenerInfo h3{
+        font-size: 44px;
+    }
+    .trenerLinks img{
+        width: 75px;
+    }
+    .trenerLinks a{
+        margin-right: 25px;
+    }
+    .trenerLinks a + a{
+        margin-left: 25px;
+    }
+    .trenerWho{
+        margin-top: 0;
+        font-size: 29px;
+    }
+    .arrows{
+        width: 100px;
+    }
+    .trenerReverse{
+        padding-left: 0;
+        margin-bottom: 40px;
+    }
+    .payment span{
+        font-size: 36px;
+    }
+    .payment p{
+        font-size: 72px;
+    }
+    .links img{
+        width: 75px;
+    }
+    .links h5{
+        margin-bottom: 20px;
+    }
+    .links a{
+        margin-right: 25px;
+    }
+    .links a + a{
+        margin-left: 25px;
+    }
+    .publications a{
+        font-size: 28px;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    .homeHeader h1{
+        font-size: 30vw;
+    }
+    .homeHeader h2, .homeHeader p{
+        top: -20px;
+    }
+    .homeHeader h2{
+        font-size: 8vw;
+        margin-left: 10px;
+    }
+    .homeHeader p{
+        font-size: 5vw;
+    }
+    .homeHeader{
+        text-align: left;
+    }
+}
+@media screen and (max-width: 468px){
+    .homeTop{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .homeHeader p{
+        margin-left: 17px;
+    }
+    .homeImages{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .homeImages img{
+        height: 200px;
+    }
+    .homeImages img + img{
+        margin-left: 0;
+    }
+    .beSmartText{
+        padding-bottom: 30px;
+        margin-top: 30px;
+        font-size: 18px;
+    }
+    .date{
+        font-size: 23px;
+        padding: 30px 65px;
+    }
+    .buttons{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .garderobTextMobile{
+        font-size: 18px;
+        margin-block-start: 90px;
+    }
+    .about h2{
+        padding-left: 0;
+    }
+    .points ul{
+        padding-right: 25px;
+    }
+    .about{
+        margin-top: 50px;
+    }
+    .about li{
+        font-size: 22px;
+    }
+    .garderob{
+        margin-top: 50px;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        padding: 0;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .garderob img{
+        width: 80%;
+        margin: 0;
+    }
+    .garderobBlockText{
+       width: 100%;
+       margin-top: 25px;
+    }
+    .garderobBlockText ul{
+        margin-left: -20px;
+    }
+    .shedule{
+        margin-top: 45px;
+        padding-left: 10%;
+        padding-right: 10%;
+        box-sizing: border-box;
+    }
+    .collageText{
+        padding: 0;
+        width: 100%;
+    }
+    .collageText h2{
+        font-size: 30px;
+    }
+    .shedule p{
+        font-size: 18px;
+    }
+    .shedule span{
+        font-size: 17px;
+    }
+    .collageImgBlock{
+        right: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        margin-top: 40px;
+    }
+    .collageImgBlock img{
+        width: 80%;
+        position: initial;
+    }
+    .collageBlockReverse img{
+        margin-top: 15px;
+    }
+    .lessonReverseImage{
+        top: 0px !important;
+        position: relative;
+    }
+    .adaptiveCollage img{
+        width: 70%;
+    }
+    .lastImg{
+        margin-bottom: 0;
+    }
+    .info{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .info p{
+        font-size: 18px;
+    }
+    .trainers h2{
+        font-size: 24px;
+    }
+    .trenerInfo h3{
+        font-size: 26px;
+    }
+    .trenerLinks{
+        margin-top: 20px;
+        height: 75px;
+    }
+    .trenerLinks img{
+        width: 50px;
+    }
+    .trenerLinks a{
+        margin-right: 15px;
+    }
+    .trenerLinks a + a{
+        margin-left: 15px;
+    }
+    .trenerWho{
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    .trenerWho p{
+        margin-bottom: 10px;
+    }
+    .arrows{
+        width: 50px;
+    }
+    .trenerReverse img{
+        margin-bottom: 40px;
+    }
+    .payment{
+        margin-top: 50px;
+    }
+    .payment span{
+        font-size: 22px;
+    }
+    .payment p{
+        font-size: 36px;
+    }
+    .links h5{
+        font-size: 30px;
+    }
+    .links img{
+        width: 50px;
+    }
+    .links a{
+        margin-right: 15px;
+    }
+    .links a + a{
+        margin-left: 15px;
+    }
+    .publications{
+        padding-left: 10%;
+        padding-right: 10%;
+        margin-top: 50px;
+    }
+    .publications h5{
+        font-size: 31px;
+    }
+    .publications a{
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .date{
+        text-align: center;
+        font-size: 18px;
+    }
+    .garderobTextMobile{
+        font-size: 16px;
+    }
+    .collageText h2{
+        font-size: 24px;
+    }
+    .trainers h2{
+        font-size: 20px;
+    }
+    .links a{
+        margin-left: 15px;
+    }
+    .links a + a{
+        margin-right: 15px;
+    }
+    .publications h5{
+        font-size: 28px;
+    }
+    .publications a{
+        font-size: 18px;
+    }
+    .publications{
+        margin-bottom: 0;
     }
 }

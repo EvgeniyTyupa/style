@@ -55,3 +55,17 @@
     margin-block-start: 5px;
     font-size: 12px;
 }
+
+@media screen and (max-width: 1200px){
+    .main form{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 468px){
+    .main form{
+        width: 90%;
+    }
+    .main button{
+        width: max-content;
+    }
+}
