@@ -337,7 +337,7 @@ const Main = (props) => {
                     </p>
                     <p>{t("treners.one.dop.two")}</p>
                     <ul>
-                        <li>{t("treners.one.dop.three")} "Bogomolov 'Image School";</li>
+                        <li>{t("treners.one.dop.three")} “Bogomolov’ Image School”.</li>
                         <li>{t("treners.one.dop.four")}</li>
                         <li>{t("treners.one.dop.five")}</li>
                         <li>{t("treners.one.dop.six")}</li>
