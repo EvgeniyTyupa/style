@@ -333,11 +333,11 @@ const Main = (props) => {
                 <div className={classes.dopInfo} data-aos="fade-right" data-aos-duration="1300">
                     <p className={classes.dopHeader}>
                         {t("treners.one.dop.one")}<br/>
-                        «Bogomolov’ Image School».
+                        "Bogomolov’ Image School".
                     </p>
                     <p>{t("treners.one.dop.two")}</p>
                     <ul>
-                        <li>{t("treners.one.dop.three")}</li>
+                        <li>{t("treners.one.dop.three")} "Bogomolov 'Image School";</li>
                         <li>{t("treners.one.dop.four")}</li>
                         <li>{t("treners.one.dop.five")}</li>
                         <li>{t("treners.one.dop.six")}</li>

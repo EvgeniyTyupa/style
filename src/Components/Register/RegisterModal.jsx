@@ -42,7 +42,7 @@ const RegisterModal = (props) => {
     },[])
 
     return(
-        <div className={classes.main}>
+        <div className={classes.main} data-aos="fade" data-aos-duration="300">
             {props.isRegistered ? 
             <form data-aos="zoom-in" data-aos-duration="200">
                 <Button onClick={()=>{props.setIsOpenRegister(false)}}>
