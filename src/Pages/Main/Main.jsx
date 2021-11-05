@@ -213,7 +213,9 @@ const Main = (props) => {
                         <ul>
                             <li>{t("about.pointSix")}</li>
                             <li>{t("about.pointSeven")}</li>
-                            <li id="shedule" ref={sheduleRef}>{t("about.pointEight")}</li>
+                            <li id="shedule">{t("about.pointEight")}</li>
+                            <li id="shedule">{t("about.pointNine")}</li>
+                            <li id="shedule" ref={sheduleRef}>{t("about.pointTen")}</li>
                         </ul>
                     </div>
                 </div>
@@ -226,7 +228,13 @@ const Main = (props) => {
                         <p className={classes.sheduleNumber}>{t("shedule.lessonOneTitle")}</p>
                         <p className={classes.sheduleInfo}>{t("shedule.lessonOneInfo")}</p>
                         <hr/>
-                        <span>{t("shedule.lessonOneSub")}</span>
+                        <div className={classes.pointsShedule}>
+                            <p><span> - {t("shedule.lessonOneSub.one")}</span></p>
+                            <p><span> - {t("shedule.lessonOneSub.two")}</span></p>
+                            <p><span> - {t("shedule.lessonOneSub.three")}</span></p>
+                            <p><span> - {t("shedule.lessonOneSub.four")}</span></p>
+                            <p><span> - {t("shedule.lessonOneSub.five")}</span></p>
+                        </div>
                     </div>
                     <div className={classes.collageImgBlock}>
                         <img src={collage} alt="collage" data-aos="fade-right" data-aos-duration="1300"/>
@@ -240,7 +248,11 @@ const Main = (props) => {
                             {t("shedule.lesson2.info1")}
                         </p>
                         <hr/>
-                        <span>{t("shedule.lesson2.sub")} </span>
+                        <div className={classes.pointsShedule}>
+                            <p><span> - {t("shedule.lesson2.lessonTwoSub.one")}</span></p>
+                            <p><span> - {t("shedule.lesson2.lessonTwoSub.two")}</span></p>
+                            <p><span> - {t("shedule.lesson2.lessonTwoSub.three")}</span></p>
+                        </div>
                     </div>
                     <img src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
@@ -252,7 +264,11 @@ const Main = (props) => {
                             {t("shedule.lesson3.info1")}
                         </p>
                         <hr/>
-                        <span>{t("shedule.lesson3.sub")}</span>
+                        <div className={classes.pointsShedule}>
+                            <p><span> - {t("shedule.lesson3.lessonThreeSub.one")}</span></p>
+                            <p><span> - {t("shedule.lesson3.lessonThreeSub.two")}</span></p>
+                            <p><span> - {t("shedule.lesson3.lessonThreeSub.three")}</span></p>
+                        </div>
                     </div>
                     <img src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
@@ -260,12 +276,14 @@ const Main = (props) => {
                     <div className={classes.collageText}>
                         <p className={classes.sheduleNumber}>{t("shedule.lesson4.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            {t("shedule.lesson4.info")}<br/>
-                            {t("shedule.lesson4.info1")}<br/>
-                            {t("shedule.lesson4.info2")}
+                            {t("shedule.lesson4.info")}
                         </p>
                         <hr/>
-                        <span>{t("shedule.lesson4.sub")}</span>
+                        <div className={classes.pointsShedule}>
+                            <p><span> - {t("shedule.lesson4.lessonSub.one")}</span></p>
+                            <p><span> - {t("shedule.lesson4.lessonSub.two")}</span></p>
+                            <p><span> - {t("shedule.lesson4.lessonSub.three")}</span></p>
+                        </div>
                     </div>
                     <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
@@ -273,12 +291,13 @@ const Main = (props) => {
                     <div className={classes.collageText}>
                         <p className={classes.sheduleNumber}>{t("shedule.lesson5.title")}</p>
                         <p className={classes.sheduleInfo}>
-                            {t("shedule.lesson5.info")}<br/>
-                            {t("shedule.lesson5.info1")} <br/>
-                            {t("shedule.lesson5.info2")}
+                            {t("shedule.lesson5.info")}
                         </p>
                         <hr/>
-                        <span>{t("shedule.lesson5.sub")}</span>
+                        <div className={classes.pointsShedule}>
+                            <p><span> - {t("shedule.lesson5.lessonSub.one")}</span></p>
+                            <p><span> - {t("shedule.lesson5.lessonSub.two")}</span></p>
+                        </div>
                     </div>
                     <img src={lesson4} className={classes.lessonImage + " " + classes.lastImg} alt="lesson4" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
