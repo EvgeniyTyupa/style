@@ -12,13 +12,14 @@ import 'aos/dist/aos.css';
 
 import { useTranslation } from "react-i18next";
 
+import logo from '../../Assets/logo.jpg';
 import trener1 from '../../Assets/trener1.jpg';
 import trener2 from '../../Assets/trener2.jpg';
 import garderob from '../../Assets/garderob.jpg';
 import collage from '../../Assets/collage.jpg';
-import lesson1 from '../../Assets/lesson1.svg';
-import lesson2 from '../../Assets/lesson2.svg';
-import lesson3 from '../../Assets/lesson3.svg';
+import lesson1 from '../../Assets/less2.JPG';
+import lesson2 from '../../Assets/less3.png';
+import lesson3 from '../../Assets/less4.png';
 import lesson4 from '../../Assets/lesson4.svg';
 import quadro from '../../Assets/quadro.svg';
 import trener1_1 from '../../Assets/trener1_1.jpg';
@@ -158,6 +159,7 @@ const Main = (props) => {
             </div>
             <nav className={classes.menu + " " + (scrolledNav && classes.scrolledNav)}>
                 <div className={classes.menuContainer}>
+                    <img src={logo} alt="logo" className={classes.logo}/>
                     <Link to="/#about" data-aos="fade-down" className={active1 ? classes.activeLink : ""}>{t("menu.one")}</Link>
                     <Link to="/#shedule" data-aos="fade-down" className={active2 ? classes.activeLink : ""}>{t("menu.two")}</Link>
                     <Link to="/#trainers" data-aos="fade-down" className={active3 ? classes.activeLink : ""}>{t("menu.three")}</Link>
@@ -178,7 +180,7 @@ const Main = (props) => {
                     </div>
                     <div className={classes.homeImages} data-aos="fade-up" data-aos-delay="400" data-aos-duration="1300">
                         <img src={trener1} alt="trener1"/>
-                        <img src={trener2} alt="trener2"/>
+                        {/* <img src={trener2} alt="trener2"/> */}
                     </div>
                     <span className={classes.beSmartText}>Be Smart, Be Fashion!</span>
                 </div>
@@ -231,7 +233,7 @@ const Main = (props) => {
                         <div className={classes.pointsShedule}>
                             <p><span> - {t("shedule.lessonOneSub.one")}</span></p>
                             <p><span> - {t("shedule.lessonOneSub.two")}</span></p>
-                            <p><span> - {t("shedule.lessonOneSub.three")}</span></p>
+                            {/* <p><span> - {t("shedule.lessonOneSub.three")}</span></p> */}
                             <p><span> - {t("shedule.lessonOneSub.four")}</span></p>
                             <p><span> - {t("shedule.lessonOneSub.five")}</span></p>
                         </div>
@@ -245,7 +247,7 @@ const Main = (props) => {
                         <p className={classes.sheduleNumber}>{t("shedule.lesson2.title")}</p>
                         <p className={classes.sheduleInfo}>
                             {t("shedule.lesson2.info")}<br/>
-                            {t("shedule.lesson2.info1")}
+                            {/* {t("shedule.lesson2.info1")} */}
                         </p>
                         <hr/>
                         <div className={classes.pointsShedule}>
@@ -254,7 +256,7 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson2.lessonTwoSub.three")}</span></p>
                         </div>
                     </div>
-                    <img src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
+                    <img className={classes.lessonImagePic} src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
@@ -270,7 +272,7 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson3.lessonThreeSub.three")}</span></p>
                         </div>
                     </div>
-                    <img src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
+                    <img  src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
                 </div>
                 <div className={classes.collageBlockReverse}>
                     <div className={classes.collageText}>
@@ -340,19 +342,23 @@ const Main = (props) => {
                             <p>{t("treners.one.sub.two")}</p>
                             <p>{t("treners.one.sub.three")}</p>
                             <p>{t("treners.one.sub.four")}</p>
-                        </div>
-                        <div className={classes.trenerSubInfo}>
-                            <h4>{t("treners.one.sub.five")}</h4>
                             <p>{t("treners.one.sub.six")}</p>
+                        </div>
+                        {/* <div className={classes.trenerSubInfo}>
+                            <h4>{t("treners.one.sub.five")}</h4>
+                            
                             <p>{t("treners.one.sub.seven")}</p>
                             <p>{t("treners.one.sub.eight")}</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className={classes.dopInfo} data-aos="fade-right" data-aos-duration="1300">
+                    <h4>{t("treners.one.dop.one_title")}</h4>
                     <p className={classes.dopHeader}>
-                        {t("treners.one.dop.one")}<br/>
-                        "Bogomolov’ Image School".
+                        - {t("treners.one.dop.one")}<br/>
+                        "Bogomolov’ Image School". <br/>
+                        - {t("treners.one.dop.one1")}<br/>
+                        "Nigay School"
                     </p>
                     <p>{t("treners.one.dop.two")}</p>
                     <ul>
@@ -362,9 +368,11 @@ const Main = (props) => {
                         <li>{t("treners.one.dop.six")}</li>
                         <li>{t("treners.one.dop.seven")}</li>
                         <li>{t("treners.one.dop.eight")}</li>
+                        <li>{t("treners.one.dop.nine")}</li>
+                        <li>{t("treners.one.dop.ten")}</li>
                     </ul>
                 </div>
-                <img src={arrows} className={classes.arrows}/>
+                {/* <img src={arrows} className={classes.arrows}/>
                 <div className={classes.trenerReverse} data-aos="fade-down" data-aos-duration="1300">
                     <img src={trener2_2} alt="trener" className={classes.trenerImage}/>
                     <div className={classes.trenerInfo}>
@@ -405,7 +413,7 @@ const Main = (props) => {
                         <li>{t("treners.two.dop.five")}</li>
                     </ul>
                     <span></span>
-                </div>
+                </div> */}
                 
             </div>
             <div className={classes.buttons} data-aos="fade-down" data-aos-duration="1300" id="signup" ref={signupRef}>
@@ -432,11 +440,12 @@ const Main = (props) => {
                 </div>
                 <div className={classes.publications} data-aos="fade-down" data-aos-duration="1600" data-aos-delay="300">
                     <h5>{t("publications.title")}</h5>
+                    <a target="_blank" href="https://www.profispace.media/2021/08/28/pravila-udachnogo-shoppinga/">{t("publications.zero")}</a>
                     <a target="_blank" href="https://www.profispace.media/ru/2020/12/25/idei-stilnh-podarkov">{t("publications.one")} <br/>{t("publications.one1")}</a>
-                    <a target="_blank" href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">{t("publications.two")} <br/> {t("publications.two1")}</a>
+                    {/* <a target="_blank" href="https://www.profispace.media/ru/2020/11/07/na-stile-12-glavnh-modnh-trendov-osen-zima-2020-2021">{t("publications.two")} <br/> {t("publications.two1")}</a> */}
                     <a target="_blank" href="https://www.profispace.media/ru/2020/10/02/kak-sozdat-jenskii-osennii-ofisni-garderob-sovet-imidj-dizainera/?fbclid=IwAR2GYm-pZCrRGgAvw2VFsthtkXifwJlYqEBMqtr_2S2fJnFIh_zRrT4FlfU">{t("publications.three")}<br/>{t("publications.three1")}</a>
                     <a target="_blank" href="http://www.profi-fashion.com/geometriya-vneshnosti-ili-kak-rabotaet-teoriya-kibbi-na-praktike">{t("publications.four")}</a>
-                    <a target="_blank" href="http://www.profi-fashion.com/business-style">{t("publications.four")}</a>
+                    <a target="_blank" href="http://www.profi-fashion.com/business-style">{t("publications.five")}</a>
                 </div>
             </footer>
         </div>

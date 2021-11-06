@@ -45,6 +45,9 @@
     transition-duration: .6s !important;
     align-items: center;
 }
+.logo {
+    width: 75px;
+}
 .menu a:hover{
     border-bottom: 4px solid black;
 }
@@ -123,7 +126,7 @@
 }
 .homeImages img{
     position: relative;
-    left: 50px;
+    /* left: 50px; */
 }
 .homeImages img + img{
     margin-left: 38px;
@@ -306,7 +309,7 @@
 }
 .collageBlock img{
     position: relative;
-    top: -206px;
+    top: -130px;
     left: -90px;
 }
 .shedule p{
@@ -343,10 +346,15 @@
 .lessonImage{
     position: relative;
     left: 0 !important;
+    width: 30%;
 }
 .lessonReverseImage{
     position: relative;
     top: -150px !important;
+    width: 35%;
+}
+.lessonImagePic {
+    width: 30%;
 }
 
 
@@ -397,6 +405,9 @@
     max-width: 1440px;
     width: 100%;
     justify-content: space-between;
+}
+.trenerImage {
+    width: 40%;
 }
 .trenerReverse{
     display: flex;
@@ -493,6 +504,15 @@
 }
 .dopHeader{
     margin-bottom: 30px !important;
+}
+.dopInfo h4 {
+    margin-block-end: 5px;
+    margin-block-start: 0px;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 130.69%;
+    letter-spacing: 0.02em;
 }
 .dopInfo ul{
     margin: 0;
@@ -693,10 +713,9 @@
         width: 70%;
     }
     .collageBlockReverse img{
-        width: 65%;
+        width: 52%;
         margin-left: auto;
         position: relative;
-        top: -50px;
     }
     .adaptiveCollage{
         flex-direction: column;
@@ -855,7 +874,7 @@
         display: flex;
     }
     .homeImages img{
-        width: 47%;
+        width: 100%;
     }
     .beSmartText{
         width: 100%;
@@ -1095,6 +1114,7 @@
     }
     .collageBlockReverse img{
         margin-top: 15px;
+        width: 100%;
     }
     .lessonReverseImage{
         top: 0px !important;
@@ -1180,6 +1200,9 @@
 }
 
 @media screen and (max-width: 350px){
+    .about li {
+        font-size: 16px;
+    }
     .date{
         text-align: center;
         font-size: 18px;

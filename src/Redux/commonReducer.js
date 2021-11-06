@@ -1,4 +1,4 @@
-import { googleApi } from "../Api/api";
+import { googleApi, tgApi } from "../Api/api";
 
 const SET_IS_FETCHING = 'SET_IS_FETCHING';
 const SET_IS_REGISTERED = 'SET_IS_REGISTERED';
@@ -32,6 +32,7 @@ export const register = (formData) => async (dispatch) => {
     dispatch(setIsFetching(true));
     try{
         await googleApi.saveDataToGoogleSheet(formData);
+        await tgApi.saveDataToTelegramBot(formData)
         dispatch([setIsRegistered(true), setIsFetching(false)]);
     }catch(err){
         dispatch(setIsFetching(false));
