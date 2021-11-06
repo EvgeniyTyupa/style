@@ -18,7 +18,7 @@ const Thankyou = (props) => {
                 <Button>
                     <NavLink to="/" onClick={()=>{props.setIsThankyouUrl(false)}}>&#x2715;</NavLink>
                 </Button>
-                <p>{t("thankyou")}</p>
+                <p>{t("register.thankyou")}</p>
             </div>
         </div>
     )

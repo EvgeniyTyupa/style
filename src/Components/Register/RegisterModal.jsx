@@ -43,13 +43,6 @@ const RegisterModal = (props) => {
 
     return(
         <div className={classes.main} data-aos="fade" data-aos-duration="300">
-            {props.isRegistered ? 
-            <form data-aos="zoom-in" data-aos-duration="200">
-                <Button onClick={()=>{props.setIsOpenRegister(false)}}>
-                    <NavLink to="/">&#x2715;</NavLink>
-                </Button>
-                <p>{t("register.thankyou")}</p>
-            </form> : 
             <form data-aos="zoom-in" data-aos-duration="200" onSubmit={handleSubmit(onSubmit)}>
                 <Button onClick={()=>{props.setIsOpenRegister(false)}}>
                     <NavLink to="/">&#x2715;</NavLink>
@@ -67,7 +60,7 @@ const RegisterModal = (props) => {
                     {errors.email && errors.email.type === "required" && <p className={classes.error}>{t("register.error")}</p>}
                 </div>
                 <Button type="submit" className={classes.submit}>{t("register.submit")}</Button>
-            </form>}
+            </form>
         </div>
     );
 }

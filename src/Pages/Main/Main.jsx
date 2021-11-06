@@ -30,6 +30,7 @@ import arrows from '../../Assets/arrows.svg';
 import Burger from '../../Components/Burger/Burger';
 import { makeStyles, MenuItem, TextField } from '@material-ui/core';
 import Thankyou from '../../Components/Thankyou/Thankyou';
+import { setIsRegistered } from '../../Redux/commonReducer';
 
 const useStyles = makeStyles({
     root: {
@@ -137,9 +138,16 @@ const Main = (props) => {
     const [isThankyouUrl, setIsThankyouUrl] = useState(false);
 
     useEffect(() => {
+        if(props.isRegistered) {
+            window.location.pathname = "/thankyou"
+        }
+    }, [props.isRegistered])
+
+    useEffect(() => {
         if(window.location.pathname === "/thankyou"){
             setIsThankyouUrl(true)
         }else{
+            props.setIsRegistered(false)
             setIsThankyouUrl(false);
         }
     },[window.location.pathname]);
@@ -453,7 +461,10 @@ const Main = (props) => {
 }
 
 let mapStateToProps = (state) => ({
-    isFetching: state.common.isFetching
+    isFetching: state.common.isFetching,
+    isRegistered: state.common.isRegistered
 });
 
-export default connect(mapStateToProps, {})(Main);
+export default connect(mapStateToProps, {
+    setIsRegistered
+})(Main);
