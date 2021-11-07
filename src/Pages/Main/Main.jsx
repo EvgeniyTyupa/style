@@ -430,7 +430,7 @@ const Main = (props) => {
             {/* PAYMENT */}
             <div className={classes.payment}>
                 <span data-aos="fade" data-aos-duration="1300">{t("payment")}</span>
-                <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="400">750 грн / 29 $</p>
+                <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="400">550 грн / 21 $</p>
                 <hr/>
             </div>
             {/* FOOTER */}

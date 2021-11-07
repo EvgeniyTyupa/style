@@ -311,6 +311,7 @@
     position: relative;
     top: -130px;
     left: -90px;
+    height: auto;
 }
 .shedule p{
     font-style: italic;
@@ -352,9 +353,11 @@
     position: relative;
     top: -150px !important;
     width: 35%;
+    height: auto;
 }
 .lessonImagePic {
     width: 30%;
+    height: auto;
 }
 
 
@@ -408,6 +411,7 @@
 }
 .trenerImage {
     width: 40%;
+    height: auto;
 }
 .trenerReverse{
     display: flex;
@@ -937,6 +941,7 @@
     }
     .collageBlock img{
         top: -75px;
+        height: auto;
     }
     .collageBlockReverse img{
         top: 0;
@@ -1024,9 +1029,6 @@
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
-    }
-    .homeImages img{
-        height: 200px;
     }
     .homeImages img + img{
         margin-left: 0;
