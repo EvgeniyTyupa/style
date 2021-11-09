@@ -264,7 +264,9 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson2.lessonTwoSub.three")}</span></p>
                         </div>
                     </div>
-                    <img className={classes.lessonImagePic} src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
+                    <div className={classes.collageImgContainer}>
+                        <img className={classes.lessonImagePic} src={lesson1} alt="lesson1" data-aos="fade-left" data-aos-duration="1300"/>
+                    </div>
                 </div>
                 <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
@@ -280,7 +282,9 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson3.lessonThreeSub.three")}</span></p>
                         </div>
                     </div>
-                    <img  src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
+                    <div className={classes.collageImgContainer}>
+                        <img src={lesson2} className={classes.lessonImage} alt="lesson2" data-aos="fade-right" data-aos-duration="1300"/>
+                    </div>
                 </div>
                 <div className={classes.collageBlockReverse}>
                     <div className={classes.collageText}>
@@ -295,7 +299,9 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson4.lessonSub.three")}</span></p>
                         </div>
                     </div>
-                    <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3" data-aos="fade-left" data-aos-duration="1300"/>
+                    <div className={classes.collageImgContainer}>
+                        <img src={lesson3} className={classes.lessonReverseImage} alt="lesson3" data-aos="fade-left" data-aos-duration="1300"/>
+                    </div>
                 </div>
                 <div className={classes.collageBlock + " " + classes.adaptiveCollage}>
                     <div className={classes.collageText}>
@@ -309,7 +315,9 @@ const Main = (props) => {
                             <p><span> - {t("shedule.lesson5.lessonSub.two")}</span></p>
                         </div>
                     </div>
-                    <img src={lesson4} className={classes.lessonImage + " " + classes.lastImg} alt="lesson4" data-aos="fade-right" data-aos-duration="1300"/>
+                    <div className={classes.collageImgContainer}>
+                        <img src={lesson4} className={classes.lessonImage + " " + classes.lastImg} alt="lesson4" data-aos="fade-right" data-aos-duration="1300"/>
+                    </div>
                 </div>
             </div>
             {/* INFO */}
@@ -328,7 +336,9 @@ const Main = (props) => {
             <div className={classes.trainers}>
                 <h2 data-aos="fade-down" data-aos-duration="1300">{t("treners.title")}</h2>
                 <div className={classes.trener} data-aos="fade-left" data-aos-duration="1300">
-                    <img src={trener1_1} alt="trener" className={classes.trenerImage}/>
+                    <div className={classes.trenerImgContainer}>
+                        <img src={trener1_1} alt="trener" className={classes.trenerImage}/>
+                    </div>
                     <div className={classes.trenerInfo}>
                         <h3>{t("treners.one.title")}</h3>
                         <div className={classes.trenerLinks}>

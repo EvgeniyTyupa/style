@@ -289,6 +289,7 @@
     margin-right: 62px;
     padding-left: 5%;
     box-sizing: border-box;
+    width: 65%;
 }
 .collageImgBlock{
     margin-top: 295px;
@@ -297,6 +298,10 @@
     background: #E8E8E8;
     position: relative;
     right: -90px;
+}
+.collageImgContainer {
+    width: 35%;
+    margin: 40px 0;
 }
 .collageText h2{
     margin-block-end: 0;
@@ -348,17 +353,17 @@
 .lessonImage{
     position: relative;
     left: 0 !important;
-    width: 30%;
+    width: 100%;
 }
 .lessonReverseImage{
     position: relative;
     top: -150px !important;
-    width: 35%;
+    width: 100%;
     height: auto;
     object-fit: cover;
 }
 .lessonImagePic {
-    width: 30%;
+    width: 100%;
     height: auto;
     object-fit: cover;
 }
@@ -412,8 +417,11 @@
     width: 100%;
     justify-content: space-between;
 }
-.trenerImage {
+.trenerImgContainer {
     width: 40%;
+}
+.trenerImage {
+    width: 100%;
     height: auto;
 }
 .trenerReverse{
@@ -716,12 +724,18 @@
     .collageBlockReverse{
         flex-direction: column;
     }
+    .collageImgContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .collageText{
-        width: 70%;
+        width: 100%;
     }
     .collageBlockReverse img{
+        margin: 50px 0;
         width: 52%;
-        margin-left: auto;
         position: relative;
     }
     .adaptiveCollage{
@@ -729,18 +743,13 @@
     }
     .adaptiveCollage img{
         width: 60%;
-        margin-left: auto;
-        margin-right: auto;
         top: 0;
-        margin-top: 130px;
     }
     .lessonReverseImage{
         top: -50px !important;
     }
-    .lastImg{
-        margin-left: auto;
+    .lastImg{ 
         margin-bottom: 50px;
-        margin-right: 50px !important;
     }
     .info{
         width: 80%;
@@ -952,9 +961,6 @@
     .info{
         width: 90%;
     }
-    .trenerImage{
-        width: 65% !important;
-    }
     .trenerInfo h3{
         font-size: 44px;
     }
@@ -1021,6 +1027,9 @@
     }
 }
 @media screen and (max-width: 468px){
+    .trenerImgContainer {
+        width: 80%;
+    }
     .homeTop{
         padding-left: 10%;
         padding-right: 10%;

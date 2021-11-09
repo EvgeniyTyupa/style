@@ -19,7 +19,7 @@ const Buttons = (props) => {
                <NavLink to="/signup">{t("buttons.reg")}</NavLink>
            </Button>
            <Button className={classes.payment}>
-               <a target="_blank" href="https://secure.wayforpay.com/button/baa48468ad862">{t("buttons.pay")}</a>
+               <a target="_blank" href="https://secure.wayforpay.com/button/bc3a3637a8209">{t("buttons.pay")}</a>
            </Button>
        </div>
     )
